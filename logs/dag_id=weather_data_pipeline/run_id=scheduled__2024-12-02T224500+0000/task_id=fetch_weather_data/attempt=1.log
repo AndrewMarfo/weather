@@ -1,0 +1,27 @@
+[2024-12-02T22:50:07.448+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-02T22:50:07.515+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_data_pipeline.fetch_weather_data scheduled__2024-12-02T22:45:00+00:00 [queued]>
+[2024-12-02T22:50:07.547+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_data_pipeline.fetch_weather_data scheduled__2024-12-02T22:45:00+00:00 [queued]>
+[2024-12-02T22:50:07.548+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2024-12-02T22:50:07.609+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): fetch_weather_data> on 2024-12-02 22:45:00+00:00
+[2024-12-02T22:50:07.627+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1030) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-02T22:50:07.630+0000] {standard_task_runner.py:72} INFO - Started process 1035 to run task
+[2024-12-02T22:50:07.629+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_data_pipeline', 'fetch_weather_data', 'scheduled__2024-12-02T22:45:00+00:00', '--job-id', '167', '--raw', '--subdir', 'DAGS_FOLDER/weather_pipeline.py', '--cfg-path', '/tmp/tmpq6gkamw0']
+[2024-12-02T22:50:07.637+0000] {standard_task_runner.py:105} INFO - Job 167: Subtask fetch_weather_data
+[2024-12-02T22:50:07.754+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_data_pipeline.fetch_weather_data scheduled__2024-12-02T22:45:00+00:00 [running]> on host 1a5e4afa404c
+[2024-12-02T22:50:08.602+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='andrew.marfo@amalitech.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_data_pipeline' AIRFLOW_CTX_TASK_ID='fetch_weather_data' AIRFLOW_CTX_EXECUTION_DATE='2024-12-02T22:45:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-12-02T22:45:00+00:00'
+[2024-12-02T22:50:08.604+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2024-12-02T22:50:08.605+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2024-12-02T22:50:08.606+0000] {logging_mixin.py:190} INFO - Current task name:fetch_weather_data state:running start_date:2024-12-02 22:50:07.521183+00:00
+[2024-12-02T22:50:08.606+0000] {logging_mixin.py:190} INFO - Dag name:weather_data_pipeline and current dag run status:running
+[2024-12-02T22:50:08.607+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-02T22:50:09.082+0000] {python.py:240} INFO - Done. Returned value was: {'coord': {'lon': -122.6762, 'lat': 45.5234}, 'weather': [{'id': 801, 'main': 'Clouds', 'description': 'few clouds', 'icon': '02d'}], 'base': 'stations', 'main': {'temp': 280.34, 'feels_like': 277.47, 'temp_min': 279.05, 'temp_max': 282.05, 'pressure': 1025, 'humidity': 65, 'sea_level': 1025, 'grnd_level': 1014}, 'visibility': 10000, 'wind': {'speed': 4.47, 'deg': 20, 'gust': 8.05}, 'clouds': {'all': 20}, 'dt': 1733179558, 'sys': {'type': 2, 'id': 2008548, 'country': 'US', 'sunrise': 1733153551, 'sunset': 1733185718}, 'timezone': -28800, 'id': 5746545, 'name': 'Portland', 'cod': 200}
+[2024-12-02T22:50:09.123+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-02T22:50:09.124+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_data_pipeline, task_id=fetch_weather_data, run_id=scheduled__2024-12-02T22:45:00+00:00, execution_date=20241202T224500, start_date=20241202T225007, end_date=20241202T225009
+[2024-12-02T22:50:09.172+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2024-12-02T22:50:09.174+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2024-12-02T22:50:09.176+0000] {logging_mixin.py:190} INFO - Dag name:weather_data_pipeline queued_at:2024-12-02 22:50:00.296276+00:00
+[2024-12-02T22:50:09.177+0000] {logging_mixin.py:190} INFO - Task hostname:1a5e4afa404c operator:PythonOperator
+[2024-12-02T22:50:09.261+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-12-02T22:50:09.286+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

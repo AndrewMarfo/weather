@@ -1,18 +1,10 @@
 from airflow import DAG
-from airflow.operators.http_operator import SimpleHttpOperator
 from airflow.sensors.http_sensor import HttpSensor
 from airflow.hooks.base import BaseHook
 from airflow.operators.python_operator import PythonOperator
-from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from datetime import datetime, timedelta, timezone
 import requests
-import json
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-api_key = os.getenv('API_KEY')
 
 postgres_database_conn_id = 'weather_data'
 api_conn_id = 'weather_api_connection'
@@ -36,7 +28,7 @@ with DAG(
     'weather_data_pipeline',
     default_args=default_args,
     description='A dag to fetch and store daily weather data for Portland',
-    schedule_interval='@daily',
+    schedule_interval=timedelta(minutes=5),
     start_date=datetime(2024, 11, 28),
     catchup=False,
 ) as dag:
@@ -45,7 +37,6 @@ with DAG(
         task_id='check_weather_api',
         http_conn_id=api_conn_id,
         endpoint=f'data/2.5/weather?q=Portland&APPID={api_key}',
-        response_check=lambda response: response.status_code == 200,
         poke_interval=5,
         timeout=20,
     )
